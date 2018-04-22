@@ -13,7 +13,7 @@ services:
     expose:
       - "9876"
     volumes:
-      - /data/eos:/opt/eosio/bin/data-dir
+      - nodeosd-data-volume:/opt/eosio/bin/data-dir
 
   keosd:
     image: johnnyzhao/eoslaomao-eos-dawn-3.0:2018-04-22
@@ -26,4 +26,4 @@ services:
 
 volumes:
   keosd-data-volume:
-    external: true
+  nodeosd-data-volume:
