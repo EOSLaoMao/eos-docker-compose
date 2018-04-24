@@ -49,18 +49,18 @@ RUN cd ${TEMP_DIR} \
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive && apt-get install -y git
 
 RUN cd ${TEMP_DIR} \
-        &&git clone https://github.com/mongodb/mongo-cxx-driver.git --branch releases/stable --depth 1 \
-        &&cd mongo-cxx-driver/build \
-        &&cmake -DBUILD_SHARED_LIBS=OFF -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/local .. \
-        &&make -j \
-        &&make install
-
-RUN cd ${TEMP_DIR} \
         &&git clone https://github.com/cryptonomex/secp256k1-zkp.git \
         &&cd secp256k1-zkp \
         &&./autogen.sh \
         &&./configure \
         &&make -j \
+        &&make install
+
+RUN cd ${TEMP_DIR} \
+        &&git clone https://github.com/mongodb/mongo-cxx-driver.git --branch releases/stable --depth 1 \
+        &&cd mongo-cxx-driver/build \
+        &&cmake  -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/local .. \
+        &&make -j2 \
         &&make install
 
 RUN cd ${TEMP_DIR} \
