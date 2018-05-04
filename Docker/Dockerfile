@@ -12,4 +12,4 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get -y install openssl 
 
 COPY nodeosd.sh /usr/local/bin/nodeosd.sh
 RUN chmod +x /usr/local/bin/nodeosd.sh
-COPY --from=builder /tmp/build/contracts /contracts
+RUN cp -r /tmp/build/contracts /contracts
