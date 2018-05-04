@@ -9,3 +9,7 @@ RUN git clone https://github.com/EOSIO/eos --recursive \
     && cmake --build /tmp/build --target install
 
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get -y install openssl && rm -rf /var/lib/apt/lists/*
+
+COPY nodeosd.sh /usr/local/bin/nodeosd.sh
+RUN chmod +x /usr/local/bin/nodeosd.sh
+COPY --from=builder /tmp/build/contracts /contracts
