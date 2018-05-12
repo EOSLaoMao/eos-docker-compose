@@ -4,7 +4,7 @@ services:
   nodeosd:
     build:
       context: .
-    image: johnnyzhao/eos-dawn-2018-04-27-alpha:v3
+    image: johnnyzhao/eos-dawn-4.0
     command: /usr/local/bin/nodeosd.sh --data-dir /opt/eosio/bin/data-dir
     hostname: nodeosd
     ports:
@@ -16,7 +16,7 @@ services:
       - /data/nodeosd:/opt/eosio/bin/data-dir
 
   keosd:
-    image: johnnyzhao/eos-dawn-2018-04-27-alpha:v3
+    image: johnnyzhao/eos-dawn-4.0
     command: /usr/local/bin/keosd --wallet-dir /opt/eosio/bin/data-dir
     hostname: keosd
     links:
